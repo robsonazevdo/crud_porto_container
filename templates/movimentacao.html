@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Movimentar</title>
+
+
+
+  </head>
+  <body>
+    <div class="container">
+
+        <h1>Movimentar</h1>
+
+        <form action="/add_movimento" method="post">
+
+            <div class="form-group">
+                <select name="id_container" >
+                    <option required value="id_container">Escolha o Container</option>
+                    {% for c in conteineres %}
+                        <option required value="{{c['id_container']}}"{% if c['id_container'] == c['c'] %}selected="selected"{% endif %}>{{c['numero_container']}}</option>
+                    {% endfor %}
+                </select>
+            
+                </div>
+        
+                <label class="form-check-label" for="exampleCheck1">Tipo</label>
+                <select name="tipo">
+                    <option> Escolha o tipo Movimentação</option>
+                    <option value="embarque">embarque</option>
+                    <option value="descarga">descarga</option>
+                    
+                    <option value="gate_in">gate in</option>
+                    <option value="gate_out">gate out</option>
+                    <option> Escolha o tipo</option>
+                    <option value="reposicionamento">reposicionamento</option>
+                    <option value="pesagem">pesagem</option>
+                    <option value="scanner">scanner</option>
+                </select>
+
+              
+                <div class="form-group">
+
+
+                    <label for="exampleInputEmail1">Data de ìnicio</label>
+                    <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cliente" name="data_inicio">
+                    
+                    <label for="exampleInputEmail1">Data de Fim</label>
+                    <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cliente" name="data_fim">
+                </div>
+
+
+                
+                <button type="submit" class="btn btn-primary">Enviar</button>
+
+
+            </div>
+            
+        </form>
+
+    </div>
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
