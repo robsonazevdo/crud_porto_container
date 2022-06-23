@@ -13,58 +13,116 @@
 
 
   </head>
-  <body>
+  <body style="background-color:#D3D3D3;">
+    
+
     <div class="container">
 
-        <h1>Movimentar</h1>
+        <a class="btn btn-primary m-5" href="/" >Voltar ao Ínicio</a>
 
-        <form action="/add_movimento" method="post">
+        <h1 class="m-2 text-center">Movimentar</h1>
 
-            <div class="form-group">
-                <select name="id_container" >
-                    <option required value="id_container">Escolha o Container</option>
-                    {% for c in conteineres %}
-                        <option required value="{{c['id_container']}}"{% if c['id_container'] == c['c'] %}selected="selected"{% endif %}>{{c['numero_container']}}</option>
-                    {% endfor %}
-                </select>
-            
+        <span id="msgAlert"></span>
+
+        <form action="/add_movimento" method="post" id="formulario">
+
+            <div class="form-group input-group m-3">
+
+                <div class="input-group">
+                    <span class="input-group-text">Container</span>
+                    <select class="form-control" name="id_container" >
+                        <option required value="">Escolha o Container</option>
+                        {% for c in conteineres %}
+                            <option required value="{{c['id_container']}}"{% if c['id_container'] == c['c'] %}selected="selected"{% endif %}>{{c['numero_container']}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-        
-                <label class="form-check-label" for="exampleCheck1">Tipo</label>
-                <select name="tipo">
-                    <option> Escolha o tipo Movimentação</option>
-                    <option value="embarque">embarque</option>
-                    <option value="descarga">descarga</option>
-                    
-                    <option value="gate_in">gate in</option>
-                    <option value="gate_out">gate out</option>
-                    <option> Escolha o tipo</option>
-                    <option value="reposicionamento">reposicionamento</option>
-                    <option value="pesagem">pesagem</option>
-                    <option value="scanner">scanner</option>
-                </select>
 
+                </div>
+                <div class="form-group input-group m-3">
+                    <span class="input-group-text">Tipo Movimentação</span>
+                    <select class="form-control" name="tipo" id="tipo">
+                        <option value="">Escolha o tipo Movimentação</option>
+                        <option value="embarque">embarque</option>
+                        <option value="descarga">descarga</option>
+                        
+                        <option value="gate_in">gate in</option>
+                        <option value="gate_out">gate out</option>
+                        
+                        <option value="reposicionamento">reposicionamento</option>
+                        <option value="pesagem">pesagem</option>
+                        <option value="scanner">scanner</option>
+                    </select>
+                </div>
               
-                <div class="form-group">
-
-
-                    <label for="exampleInputEmail1">Data de ìnicio</label>
-                    <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cliente" name="data_inicio">
-                    
-                    <label for="exampleInputEmail1">Data de Fim</label>
-                    <input type="datetime-local" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cliente" name="data_fim">
-                </div>
-
-
                 
-                <button type="submit" class="btn btn-primary">Enviar</button>
 
-
+                <div class="form-group input-group m-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Data de ínicio</span>
+                    </div>
+                    <input required type="datetime-local" aria-label="data_inicio" class="form-control" name="data_inicio">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Data do Fim</span>
+                      </div>
+                    <input required type="datetime-local" aria-label="data_fim" class="form-control" name="data_fim">
+                  </div>
+                  <button type="submit" class="btn btn-primary m-5 " style="width: 200px;">Enviar</button>
             </div>
             
         </form>
-
+        
     </div>
+
+
+
+    <script>
+
+
+      const formulario =  document.querySelector("#formulario");
+  
+      formulario.onsubmit = evento => {
+  
+          
+  
+          var tipo = document.querySelector("#tipo").value;
+          
+          if( tipo === ""){
+  
+              evento.preventDefault();
+              document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Tipo de Movimentação!</p>";
+              return;
+  
+          }
+          
+          var status = document.querySelector("#status").value;
+          
+          if( status === ""){
+  
+              evento.preventDefault();
+              document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Status!</p>";
+              return;
+  
+          }
+  
+          var categoria = document.querySelector("#categoria").value;
+          
+          if( categoria === ""){
+  
+              evento.preventDefault();
+              document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Categoria!</p>";
+              return;
+  
+          }
+  
+      }
+  
+  
+      
+  </script>
+
+
+
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

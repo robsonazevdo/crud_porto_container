@@ -10,60 +10,138 @@
 
     <title>Container</title>
   </head>
-  <body>
+  <body style="background-color:#D3D3D3;">
+
     <div class="container">
 
-        <h1>Adicionar Conteiner</h1>
+        <a class="btn btn-primary mb-3 mt-5" href="/" role="button">Voltar ao Ínicio</a>
+        <h1 class="form-group input-group mb-3 mt-3">Adicionar Conteiner</h1>
 
-        <form action="/add_container" method="POST">
-            <div class="form-group">
+        <span id="msgAlert"></span>
 
+        <form action="/add_container" method="POST" id="formulario" name="formulario">
 
-                <label for="exampleInputEmail1">CLiente</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cliente" name="cliente">
+            <div class="form-group input-group mb-3 mt-5 ">
+
+                <span class="input-group-text">Cliente</span>
+                <input style="text-transform: Upcase;"   type="text" class="form-control" id="cliente" aria-describedby="emailHelp" placeholder="Cliente" name="cliente">
                 
             </div>
 
-            <div class="form-group">
 
+            <div class="form-group input-group mb-3 mt-3">
 
-                <label for="exampleInputEmail1">Número Container</label>
-                <input type="text" maxlength="11" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="TEST1234567" name="numero">
+                <span class="input-group-text">Número Container</span>
+                <input style="text-transform: upcase;"  type="text" maxlength="11" pattern="[A-Z]{4}[0-9]{7}" class="form-control"  aria-describedby="emailHelp" placeholder="TEST1234567" name="numero" id="numero">
                 
-          
-            
-                <label class="form-check-label" for="exampleCheck1">Tipo</label>
-                <select name="tipo">
-                    <option> Escolha o tipo</option>
+            </div>
+
+
+            <div class="form-group input-group mb-3">
+                <span class="input-group-text">Tipo Container</span>
+                <select class="form-control" name="tipo" id="tipo">
+                    <option value=""> Escolha o tipo</option>
                     <option value="20">20</option>
                     <option value="40">40</option>
                 </select>
+            </div>
+            
 
-                
-                    <label class="form-check-label" for="exampleCheck1">status</label>
-                    <select name="status">
-                        <option>status</option>
+            <div class="form-group input-group mb-3">    
+                <span class="input-group-text">Status</span>
+                    <select class="form-control" name="status" id="status">
+                        <option value="">status</option>
                         <option value="cheio">Cheio</option>
                         <option value="vazio">vazio</option>
                     </select>
-    
+            </div>
 
-                    <label class="form-check-label" for="exampleCheck1">Categoria</label>
-                    <select name="categoria">
-                        <option> Escolha a Categoria</option>
+            <div class="form-group input-group mb-3">
+
+                    <span class="input-group-text">Categoria</span>
+                    <select class="form-control" name="categoria" id="categoria">
+                        <option value=""> Escolha a Categoria</option>
                         <option value="Importação">Importação</option>
                         <option value="Exportação">Exportação</option>
                     </select>
+
                 </div>
 
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit"  class="btn btn-primary">Enviar</button>
 
             </div>
             
         </form>
+        
 
     </div>
     
+    
+
+<script>
+
+
+    const formulario =  document.querySelector("#formulario");
+
+    formulario.onsubmit = evento => {
+
+        var cliente = document.querySelector("#cliente").value;
+        
+        if( cliente === ""){
+
+            evento.preventDefault();
+            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Cliente!</p>";
+            return;
+
+        }
+
+
+
+        var numero = document.querySelector("#numero").value;
+        
+        if( numero === ""){
+
+            evento.preventDefault();
+            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Número Container!</p>";
+            return;
+
+        }
+
+        var tipo = document.querySelector("#tipo").value;
+        
+        if( tipo === ""){
+
+            evento.preventDefault();
+            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Tipo Container!</p>";
+            return;
+
+        }
+        
+        var status = document.querySelector("#status").value;
+        
+        if( status === ""){
+
+            evento.preventDefault();
+            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Status!</p>";
+            return;
+
+        }
+
+        var categoria = document.querySelector("#categoria").value;
+        
+        if( categoria === ""){
+
+            evento.preventDefault();
+            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Categoria!</p>";
+            return;
+
+        }
+
+    }
+
+
+    
+</script>
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

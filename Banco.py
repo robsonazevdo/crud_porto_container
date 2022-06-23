@@ -46,11 +46,11 @@ sql_create = '''
 CREATE TABLE IF NOT EXISTS container (
     id_container INTEGER PRIMARY KEY AUTOINCREMENT,
     cliente VACHAR(50) NOT NULL,
-    numero_container VACHAR(11) NOT NULL,
+    numero_container VACHAR(11) NOT NULL UNIQUE,
     tipo VACHAR(2) NOT NULL,
     status VACHAR(5) NOT NULL,
-    categoria VACHAR(11) NOT NULL,
-    UNIQUE(numero_container)
+    categoria VACHAR(11) NOT NULL
+    
     
     );
 
@@ -124,7 +124,7 @@ def db_lista_container():
 
 def db_lista_relatario():
     with closing(conectar()) as con, closing(con.cursor()) as cur:
-        cur.execute("SELECT c.id_container, c.cliente, m.tipo FROM container as c INNER JOIN movimentacao as m on c.id_container = m.id_container")
+        cur.execute("SELECT c.cliente, m.tipo FROM container as c INNER JOIN movimentacao as m on c.id_container = m.id_container GROUP BY c.cliente, m.tipo")
         return rows_to_dict(cur.description, cur.fetchall())
 
 

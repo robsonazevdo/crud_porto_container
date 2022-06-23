@@ -14,6 +14,11 @@ def inicio():
     return render_template('index.html')
 
 
+@app.route('/base')
+def base():
+    return render_template('_base.html')
+
+
 
 @app.route('/container')
 def container():
