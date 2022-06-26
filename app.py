@@ -14,9 +14,6 @@ def inicio():
     return render_template('index.html')
 
 
-@app.route('/base')
-def base():
-    return render_template('_base.html')
 
 
 
@@ -54,11 +51,11 @@ def relatorio():
 def add_container():
     
  # Extrai os dados do formulário.
-    cliente = request.form["cliente"]
-    numero = request.form["numero"]
-    tipo = request.form["tipo"]
-    status = request.form["status"]
-    categoria = request.form["categoria"]
+    cliente = request.form["cliente"].lstrip().upper()
+    numero = request.form["numero"].lstrip()
+    tipo = request.form["tipo"].lstrip().capitalize()
+    status = request.form["status"].lstrip().capitalize()
+    categoria = request.form["categoria"].lstrip().capitalize()
     
     # Faz o processamento.
     ja_existia, container = Banco.criar_container(cliente, numero, tipo, status, categoria)

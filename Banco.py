@@ -82,7 +82,7 @@ def db_inicialiar():
 
 def db_verificar_container(cliente, numero_container, tipo, status, categoria):
     with closing(conectar()) as con, closing(con.cursor()) as cur:
-        cur.execute(" SELECT id_container, cliente, numero_container, tipo, status, categoria FROM container where cliente = ? AND numero_container = ?", [cliente, numero_container])
+        cur.execute(" SELECT id_container, cliente, numero_container, tipo, status, categoria FROM container where numero_container = ?", [numero_container])
         return row_to_dict(cur.description, cur.fetchone())
 
 

@@ -16,15 +16,14 @@
         <h1 class="mt-5 text-center" >Bem Vindo ao Porto</h1>
 
         {% if mensagem %}
-        <p>{{mensagem}}</p>
-
+        <p class="alert alert-danger" role="alert">{{mensagem}}</p>
         {% endif %}
 
         <nav class="nav nav-pills nav-justified ">
 
-          <a style="border-radius: 12px;" class="nav-item nav-link active m-5 shadow-lg p-3 mb-5  border border-primary" href="/container">Adicionar Container</a>
-          <a style="border-radius:12px;" class="nav-item nav-link active  m-5 shadow-lg p-3 mb-5  border border-primary" href="/movimentacao">Movimentar Container</a>
-          <a style="border-radius:12px;" class="nav-item nav-link active  m-5 shadow-lg p-3 mb-5  border border-primary" href="/relatorio">Relatório</a>
+          <a style="border-radius: 12px;"class="nav-item nav-link active m-5 shadow-lg p-3 mb-5  border border-secondary btn btn-secondary" href="/container">Adicionar Container</a>
+          <a style="border-radius:12px;" class="nav-item nav-link active  m-5 shadow-lg p-3 mb-5  border border-secondary btn btn-secondary" href="/movimentacao">Movimentar Container</a>
+          <a style="border-radius:12px;" class="nav-item nav-link active  m-5 shadow-lg p-3 mb-5  border border-secondary btn btn-secondary" href="/relatorio">Relatório</a>
           
         </nav>
         

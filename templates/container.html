@@ -14,7 +14,7 @@
 
     <div class="container">
 
-        <a class="btn btn-primary mb-3 mt-5" href="/" role="button">Voltar ao Ínicio</a>
+        <a class="btn btn-secondary mb-3 mt-5" href="/" role="button">Voltar ao Ínicio</a>
         <h1 class="form-group input-group mb-3 mt-3">Adicionar Conteiner</h1>
 
         <span id="msgAlert"></span>
@@ -67,7 +67,7 @@
 
                 </div>
 
-                    <button type="submit"  class="btn btn-primary">Enviar</button>
+                    <button type="submit"  class="btn btn-secondary">Enviar</button>
 
             </div>
             
@@ -90,7 +90,7 @@
         if( cliente === ""){
 
             evento.preventDefault();
-            document.getElementById("msgAlert").innerHTML = "<p style='color: #f00;'> Necessário preencher o campo Cliente!</p>";
+            document.getElementById("msgAlert").innerHTML = "<p class='alert alert-danger' role='alert'> Necessário preencher o campo Cliente!</p>";
             return;
 
         }
